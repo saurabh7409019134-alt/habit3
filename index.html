@@ -435,38 +435,103 @@
     return json;
   }
 
-  async function generateLevelUpQuestions(){
-    levelUpLoading = true; levelUpError = '';
-    renderPage();
-    try{
-      const prompt = `You are helping someone plan a genuinely productive day. Their category: "${levelUpCategory}". Generate exactly 10 short, specific questions to learn their daily routine, fixed commitments, energy patterns, and priorities so their day can be scheduled well (e.g. wake time, commute/class/work hours, deadlines, when they focus best). Respond with ONLY a JSON array of 10 short question strings. No markdown, no explanation, just the JSON array.`;
-      const qs = await callClaude(prompt);
-      levelUpQuestions = Array.isArray(qs) ? qs.slice(0,10) : [];
-      levelUpAnswers = new Array(levelUpQuestions.length).fill('');
-      levelUpStep = 'questions';
-    }catch(e){
-      levelUpError = "Couldn't generate questions — try again.";
+  let levelUpRoutine = {
+    wakeTime: '',
+    mainActivityStart: '',
+    mainActivityEnd: '',
+    bedTime: '',
+    breaks: []
+  };
+
+  async function callClaude(promptText){
+    // Dummy function - no longer used
+    return {};
+  }
+
+  function generateLevelUpTimeline(){
+    if(!levelUpRoutine.wakeTime || !levelUpRoutine.mainActivityStart || !levelUpRoutine.mainActivityEnd || levelUpTasks.length === 0){
+      levelUpError = 'Please fill in your routine times and add at least one task.';
+      renderPage();
+      return;
     }
-    levelUpLoading = false;
+    
+    // Parse times
+    const timeToMinutes = (t) => {
+      const [h, m] = t.split(':').map(Number);
+      return h * 60 + m;
+    };
+    
+    const minutesToTime = (min) => {
+      const h = Math.floor(min / 60);
+      const m = min % 60;
+      return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+    };
+
+    const wake = timeToMinutes(levelUpRoutine.wakeTime);
+    const actStart = timeToMinutes(levelUpRoutine.mainActivityStart);
+    const actEnd = timeToMinutes(levelUpRoutine.mainActivityEnd);
+    const bed = levelUpRoutine.bedTime ? timeToMinutes(levelUpRoutine.bedTime) : 1380; // 11 PM default
+
+    // Simple timeline: place short tasks before activity, medium tasks during, long/flexible after
+    levelUpPlan = [];
+    let currentTime = wake;
+    
+    // Add morning buffer
+    if(currentTime + 30 <= actStart){
+      levelUpPlan.push({
+        time: minutesToTime(currentTime),
+        task: 'Morning routine',
+        note: 'Start your day'
+      });
+      currentTime += 30;
+    }
+
+    // Sort tasks by estimated length (guess based on task name)
+    const tasksByLength = levelUpTasks.map(t => ({
+      task: t,
+      length: t.length > 20 ? 60 : t.length > 10 ? 45 : 30
+    })).sort((a, b) => b.length - a.length);
+
+    // Place tasks
+    tasksByLength.forEach(({ task, length }) => {
+      if(currentTime + length <= actStart){
+        levelUpPlan.push({
+          time: minutesToTime(currentTime),
+          task: task,
+          note: 'Before main activity'
+        });
+        currentTime += length + 10; // 10 min buffer
+      } else if(currentTime + length <= actEnd){
+        levelUpPlan.push({
+          time: minutesToTime(currentTime),
+          task: task,
+          note: 'During activity window'
+        });
+        currentTime += length + 10;
+      } else if(currentTime + length <= bed){
+        levelUpPlan.push({
+          time: minutesToTime(currentTime),
+          task: task,
+          note: 'After activity'
+        });
+        currentTime += length + 10;
+      }
+    });
+
+    // Add wind-down
+    if(currentTime + 30 <= bed){
+      levelUpPlan.push({
+        time: minutesToTime(currentTime + 30),
+        task: 'Wind down',
+        note: 'Prepare for bed'
+      });
+    }
+
+    levelUpStep = 'plan';
+    levelUpError = '';
     renderPage();
   }
 
-  async function generateLevelUpPlan(){
-    levelUpLoading = true; levelUpError = '';
-    renderPage();
-    try{
-      const qa = levelUpQuestions.map((q,i)=>`${i+1}. Q: ${q}\n   A: ${levelUpAnswers[i] || '(not answered)'}`).join('\n');
-      const taskList = levelUpTasks.map(t=>`- ${t}`).join('\n');
-      const prompt = `Category: "${levelUpCategory}"\n\nTheir answers about their routine:\n${qa}\n\nTasks they want to fit into today:\n${taskList}\n\nBuild the best possible schedule for their day: fit these tasks around their fixed commitments/routine above, choosing good timing for each (demanding/focus tasks at their best-energy times, respecting deadlines and fixed commitments, including short breaks). Respond with ONLY a JSON array (max 15 items), no markdown, no explanation, each item shaped like {"time":"7:00 AM","task":"short task label","note":"short reason, under 12 words"}.`;
-      const plan = await callClaude(prompt);
-      levelUpPlan = Array.isArray(plan) ? plan.slice(0,15) : [];
-      levelUpStep = 'plan';
-    }catch(e){
-      levelUpError = "Couldn't build your plan — try again.";
-    }
-    levelUpLoading = false;
-    renderPage();
-  }
 
   function renderSectionNav(){
     const el = document.getElementById('sectionNav');
@@ -521,26 +586,36 @@
           </div>
         </div>
       `;
-    } else if(levelUpStep === 'questions'){
-      if(levelUpLoading){
-        root.innerHTML = `<div class="levelup-page"><div class="lu-loading"><div class="spin">\u2728</div>Thinking of the right questions for you...</div></div>`;
-        return;
-      }
+    } else if(levelUpStep === 'routine'){
       root.innerHTML = `
         <div class="levelup-page">
           <button class="lu-back" id="luBackBtn">\u2039 Back</button>
-          <h1 class="lu-title">A few questions</h1>
+          <h1 class="lu-title">Your routine</h1>
           <p class="lu-sub">For: ${escapeAttr(levelUpCategory)}</p>
-          ${levelUpError ? `<div class="lu-error">${escapeAttr(levelUpError)}</div>` : ''}
-          ${levelUpQuestions.map((q,i) => `
-            <div class="lu-q">
-              <label>${i+1}. ${escapeAttr(q)}</label>
-              <input type="text" data-qidx="${i}" value="${escapeAttr(levelUpAnswers[i]||'')}" placeholder="Your answer...">
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <label style="font-size:13px;font-weight:600;">What time do you wake up?</label>
+              <input type="time" id="luWakeTime" value="${levelUpRoutine.wakeTime}" style="padding:10px;border:1px solid var(--input-border);background:var(--input-bg);color:var(--ink);border-radius:8px;font-size:14px;">
             </div>
-          `).join('')}
-          <button class="lu-primary-btn" id="luQuestionsContinueBtn">Continue to my tasks</button>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <label style="font-size:13px;font-weight:600;">When do you start your main activity?${levelUpCategory.includes('School') || levelUpCategory.includes('College') ? ' (class start)' : levelUpCategory.includes('Working') ? ' (work start)' : ''}</label>
+              <input type="time" id="luActivityStart" value="${levelUpRoutine.mainActivityStart}" style="padding:10px;border:1px solid var(--input-border);background:var(--input-bg);color:var(--ink);border-radius:8px;font-size:14px;">
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <label style="font-size:13px;font-weight:600;">When does it end?${levelUpCategory.includes('School') || levelUpCategory.includes('College') ? ' (class end)' : levelUpCategory.includes('Working') ? ' (work end)' : ''}</label>
+              <input type="time" id="luActivityEnd" value="${levelUpRoutine.mainActivityEnd}" style="padding:10px;border:1px solid var(--input-border);background:var(--input-bg);color:var(--ink);border-radius:8px;font-size:14px;">
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <label style="font-size:13px;font-weight:600;">When do you usually go to bed?</label>
+              <input type="time" id="luBedTime" value="${levelUpRoutine.bedTime}" style="padding:10px;border:1px solid var(--input-border);background:var(--input-bg);color:var(--ink);border-radius:8px;font-size:14px;">
+            </div>
+          </div>
+          <button class="lu-primary-btn" id="luRoutineContinueBtn" style="margin-top:20px;">Continue to my tasks</button>
         </div>
       `;
+    } else if(levelUpStep === 'questions'){
+      // Placeholder for old questions step (no longer used)
+      root.innerHTML = `<div class="levelup-page"></div>`;
     } else if(levelUpStep === 'tasks'){
       root.innerHTML = `
         <div class="levelup-page">
@@ -1172,20 +1247,41 @@
         renderPage();
       } else {
         levelUpCategory = cat;
-        generateLevelUpQuestions();
+        levelUpStep = 'routine';
+        renderPage();
       }
       return;
     }
     if(t.id === 'luOtherBtn'){
       const val = document.getElementById('luOtherInput').value.trim();
-      if(val){ levelUpCategory = val; generateLevelUpQuestions(); }
+      if(val){ 
+        levelUpCategory = val;
+        levelUpStep = 'routine';
+        renderPage();
+      }
       return;
     }
     if(t.id === 'luBackBtn'){
       if(levelUpStep === 'others-sub') levelUpStep = 'category';
-      else if(levelUpStep === 'questions') levelUpStep = 'category';
-      else if(levelUpStep === 'tasks') levelUpStep = 'questions';
+      else if(levelUpStep === 'routine') levelUpStep = 'category';
+      else if(levelUpStep === 'tasks') levelUpStep = 'routine';
       levelUpError = '';
+      renderPage();
+      return;
+    }
+    if(t.id === 'luRoutineContinueBtn'){
+      // Save routine times
+      levelUpRoutine.wakeTime = document.getElementById('luWakeTime').value;
+      levelUpRoutine.mainActivityStart = document.getElementById('luActivityStart').value;
+      levelUpRoutine.mainActivityEnd = document.getElementById('luActivityEnd').value;
+      levelUpRoutine.bedTime = document.getElementById('luBedTime').value;
+      if(!levelUpRoutine.wakeTime || !levelUpRoutine.mainActivityStart || !levelUpRoutine.mainActivityEnd){
+        levelUpError = 'Please fill in all times.';
+        renderPage();
+        return;
+      }
+      levelUpStep = 'tasks';
+      levelUpTasks = [];
       renderPage();
       return;
     }
@@ -1207,7 +1303,7 @@
       return;
     }
     if(t.id === 'luGeneratePlanBtn'){
-      if(levelUpTasks.length > 0) generateLevelUpPlan();
+      if(levelUpTasks.length > 0) generateLevelUpTimeline();
       return;
     }
     if(t.id === 'luStartOverBtn'){
