@@ -121,6 +121,46 @@
   .login-error{color:var(--red);font-size:12.5px;margin-top:10px;min-height:16px;}
   .logout-btn{border:1px solid var(--card-border);background:var(--card-bg);color:var(--ink);padding:8px 16px;border-radius:999px;font-size:13px;cursor:pointer;}
   .logout-btn:hover{background:var(--month-btn-bg-hover);}
+  .section-nav{margin-bottom:16px;}
+
+  /* ---------- LEVEL UP ---------- */
+  .levelup-page{max-width:720px;margin:0 auto;}
+  .lu-title{font-family:var(--serif);font-size:30px;margin:6px 0 4px;text-align:center;color:var(--ink);}
+  .lu-sub{color:var(--ink-soft);font-size:14px;text-align:center;margin:0 0 22px;}
+  .lu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:18px;}
+  .lu-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius-md);padding:22px 12px;text-align:center;cursor:pointer;font-family:var(--sans);font-size:14px;font-weight:600;color:var(--ink);box-shadow:var(--shadow);transition:transform .15s ease, border-color .15s ease;}
+  .lu-card:hover{transform:translateY(-2px);border-color:var(--input-border-focus);}
+  .lu-card span{display:block;margin-top:8px;}
+  .lu-card .emj{font-size:28px;}
+  .lu-back{border:1px solid var(--card-border);background:var(--card-bg);color:var(--ink);padding:8px 16px;border-radius:999px;font-size:13px;cursor:pointer;margin-bottom:16px;}
+  .lu-back:hover{background:var(--month-btn-bg-hover);}
+  .lu-other-row{display:flex;gap:8px;margin-top:6px;}
+  .lu-other-row input{flex:1;border:1px dashed var(--dashed-border);background:var(--input-bg);color:var(--ink);border-radius:999px;padding:10px 16px;font-size:13.5px;outline:none;}
+  .lu-other-row button{border:none;background:var(--ink);color:var(--bg-base);padding:10px 18px;border-radius:999px;font-size:13px;cursor:pointer;font-weight:600;}
+  .lu-q{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius-md);padding:12px 16px;margin-bottom:10px;}
+  .lu-q label{display:block;font-size:13.5px;color:var(--ink);margin-bottom:6px;}
+  .lu-q input{width:100%;box-sizing:border-box;border:1px solid var(--input-border);background:var(--input-bg);color:var(--ink);border-radius:8px;padding:9px 12px;font-size:13.5px;outline:none;}
+  .lu-q input:focus{border-color:var(--input-border-focus);}
+  .lu-primary-btn{width:100%;border:none;background:var(--ink);color:var(--bg-base);padding:13px;border-radius:999px;font-size:14px;font-weight:700;cursor:pointer;margin-top:8px;}
+  .lu-primary-btn:hover{opacity:0.9;}
+  .lu-primary-btn:disabled{opacity:0.5;cursor:default;}
+  .lu-task-list{margin-bottom:14px;}
+  .lu-task-item{display:flex;align-items:center;gap:10px;background:var(--card-bg);border:1px solid var(--card-border);border-radius:999px;padding:10px 16px;margin-bottom:8px;font-size:13.5px;color:var(--ink);}
+  .lu-task-item span{flex:1;}
+  .lu-task-item button{border:none;background:none;color:var(--rm-color);cursor:pointer;font-size:15px;}
+  .lu-task-item button:hover{color:var(--red);}
+  .lu-add-task-row{display:flex;gap:8px;margin-bottom:18px;}
+  .lu-add-task-row input{flex:1;border:1px dashed var(--dashed-border);background:var(--input-bg);color:var(--ink);border-radius:999px;padding:10px 16px;font-size:13.5px;outline:none;}
+  .lu-add-task-row button{border:none;background:var(--card-bg);border:1px solid var(--card-border);color:var(--ink);padding:10px 18px;border-radius:999px;font-size:13px;cursor:pointer;}
+  .lu-loading{text-align:center;padding:50px 10px;color:var(--ink-soft);font-size:14px;}
+  .lu-loading .spin{font-size:30px;display:inline-block;animation:luSpin 1s linear infinite;margin-bottom:10px;}
+  @keyframes luSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+  .lu-error{color:var(--red);font-size:13px;text-align:center;margin:10px 0;}
+  .lu-timeline{margin-bottom:18px;}
+  .lu-block{display:flex;gap:14px;background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius-md);padding:14px 16px;margin-bottom:10px;align-items:flex-start;}
+  .lu-block .time{font-family:var(--serif);font-weight:700;font-size:14px;color:var(--ink);min-width:82px;flex:none;}
+  .lu-block .task{font-size:14px;color:var(--ink);font-weight:600;margin-bottom:2px;}
+  .lu-block .note{font-size:12.5px;color:var(--ink-soft);}
 
   /* ---------- 6PM REMINDER ---------- */
   .reminder-overlay{position:fixed;inset:0;background:rgba(20,10,30,0.5);display:flex;align-items:center;justify-content:center;z-index:80;padding:20px;}
@@ -250,6 +290,7 @@
   <div id="loginRoot"></div>
   <div class="app" id="app" style="display:none;">
     <div class="top-bar" id="topBar"></div>
+    <div class="section-nav" id="sectionNav"></div>
     <div id="pageRoot"></div>
   </div>
   <div id="reminderRoot"></div>
@@ -361,6 +402,186 @@
   let weekCursor = getMonday(new Date());
   let pendingReportQueue = [];
   let saveTimer = null;
+
+  let section = 'tracker'; // 'tracker' | 'levelup'
+  let levelUpStep = 'category'; // 'category' | 'others-sub' | 'questions' | 'tasks' | 'plan'
+  let levelUpCategory = null;
+  let levelUpQuestions = [];
+  let levelUpAnswers = [];
+  let levelUpTasks = [];
+  let levelUpPlan = [];
+  let levelUpLoading = false;
+  let levelUpError = '';
+
+  function resetLevelUp(){
+    levelUpStep = 'category';
+    levelUpCategory = null;
+    levelUpQuestions = [];
+    levelUpAnswers = [];
+    levelUpTasks = [];
+    levelUpPlan = [];
+    levelUpLoading = false;
+    levelUpError = '';
+  }
+
+  async function callClaude(promptText){
+    const response = await fetch('https://zfpcfibranwzzbpydgxp.supabase.co/functions/v1/call-google-ai', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt: promptText })
+    });
+    const json = await response.json();
+    if(json.error) throw new Error(json.error);
+    return json;
+  }
+
+  async function generateLevelUpQuestions(){
+    levelUpLoading = true; levelUpError = '';
+    renderPage();
+    try{
+      const prompt = `You are helping someone plan a genuinely productive day. Their category: "${levelUpCategory}". Generate exactly 10 short, specific questions to learn their daily routine, fixed commitments, energy patterns, and priorities so their day can be scheduled well (e.g. wake time, commute/class/work hours, deadlines, when they focus best). Respond with ONLY a JSON array of 10 short question strings. No markdown, no explanation, just the JSON array.`;
+      const qs = await callClaude(prompt);
+      levelUpQuestions = Array.isArray(qs) ? qs.slice(0,10) : [];
+      levelUpAnswers = new Array(levelUpQuestions.length).fill('');
+      levelUpStep = 'questions';
+    }catch(e){
+      levelUpError = "Couldn't generate questions — try again.";
+    }
+    levelUpLoading = false;
+    renderPage();
+  }
+
+  async function generateLevelUpPlan(){
+    levelUpLoading = true; levelUpError = '';
+    renderPage();
+    try{
+      const qa = levelUpQuestions.map((q,i)=>`${i+1}. Q: ${q}\n   A: ${levelUpAnswers[i] || '(not answered)'}`).join('\n');
+      const taskList = levelUpTasks.map(t=>`- ${t}`).join('\n');
+      const prompt = `Category: "${levelUpCategory}"\n\nTheir answers about their routine:\n${qa}\n\nTasks they want to fit into today:\n${taskList}\n\nBuild the best possible schedule for their day: fit these tasks around their fixed commitments/routine above, choosing good timing for each (demanding/focus tasks at their best-energy times, respecting deadlines and fixed commitments, including short breaks). Respond with ONLY a JSON array (max 15 items), no markdown, no explanation, each item shaped like {"time":"7:00 AM","task":"short task label","note":"short reason, under 12 words"}.`;
+      const plan = await callClaude(prompt);
+      levelUpPlan = Array.isArray(plan) ? plan.slice(0,15) : [];
+      levelUpStep = 'plan';
+    }catch(e){
+      levelUpError = "Couldn't build your plan — try again.";
+    }
+    levelUpLoading = false;
+    renderPage();
+  }
+
+  function renderSectionNav(){
+    const el = document.getElementById('sectionNav');
+    if(!el) return;
+    el.innerHTML = `
+      <div class="view-toggle">
+        <button data-section="tracker" class="${section==='tracker'?'active':''}">\ud83d\uddd3\ufe0f Tracker</button>
+        <button data-section="levelup" class="${section==='levelup'?'active':''}">\ud83d\ude80 Level Up</button>
+      </div>
+    `;
+  }
+
+  const LU_MAIN_CATS = [
+    ['Productivity','\ud83d\udcc8'],
+    ['Balance Life','\u2696\ufe0f'],
+    ['School Going','\ud83c\udf92'],
+    ['College Going','\ud83c\udf93'],
+    ['Working Professional','\ud83d\udcbc'],
+    ['others','\u2728']
+  ];
+  const LU_OTHER_CATS = [
+    ['Content Creator','\ud83c\udfa5'],
+    ['Video Editor','\u2702\ufe0f'],
+    ['Graphic Designer','\ud83c\udfa8'],
+    ['Business Owner','\ud83c\udfe2'],
+    ['Shop Owner','\ud83c\udfec']
+  ];
+
+  function renderLevelUp(){
+    const root = document.getElementById('pageRoot');
+    if(levelUpStep === 'category'){
+      root.innerHTML = `
+        <div class="levelup-page">
+          <h1 class="lu-title">Level Up</h1>
+          <p class="lu-sub">Pick what best describes you, and I'll help you plan today.</p>
+          <div class="lu-grid">
+            ${LU_MAIN_CATS.map(([label,emj]) => `<button class="lu-card" data-cat="${escapeAttr(label)}"><span class="emj">${emj}</span><span>${label === 'others' ? 'Others' : escapeAttr(label)}</span></button>`).join('')}
+          </div>
+        </div>
+      `;
+    } else if(levelUpStep === 'others-sub'){
+      root.innerHTML = `
+        <div class="levelup-page">
+          <button class="lu-back" id="luBackBtn">\u2039 Back</button>
+          <h1 class="lu-title">What do you do?</h1>
+          <div class="lu-grid">
+            ${LU_OTHER_CATS.map(([label,emj]) => `<button class="lu-card" data-cat="${escapeAttr(label)}"><span class="emj">${emj}</span><span>${escapeAttr(label)}</span></button>`).join('')}
+          </div>
+          <div class="lu-other-row">
+            <input type="text" id="luOtherInput" placeholder="Or type your own...">
+            <button id="luOtherBtn">Continue</button>
+          </div>
+        </div>
+      `;
+    } else if(levelUpStep === 'questions'){
+      if(levelUpLoading){
+        root.innerHTML = `<div class="levelup-page"><div class="lu-loading"><div class="spin">\u2728</div>Thinking of the right questions for you...</div></div>`;
+        return;
+      }
+      root.innerHTML = `
+        <div class="levelup-page">
+          <button class="lu-back" id="luBackBtn">\u2039 Back</button>
+          <h1 class="lu-title">A few questions</h1>
+          <p class="lu-sub">For: ${escapeAttr(levelUpCategory)}</p>
+          ${levelUpError ? `<div class="lu-error">${escapeAttr(levelUpError)}</div>` : ''}
+          ${levelUpQuestions.map((q,i) => `
+            <div class="lu-q">
+              <label>${i+1}. ${escapeAttr(q)}</label>
+              <input type="text" data-qidx="${i}" value="${escapeAttr(levelUpAnswers[i]||'')}" placeholder="Your answer...">
+            </div>
+          `).join('')}
+          <button class="lu-primary-btn" id="luQuestionsContinueBtn">Continue to my tasks</button>
+        </div>
+      `;
+    } else if(levelUpStep === 'tasks'){
+      root.innerHTML = `
+        <div class="levelup-page">
+          <button class="lu-back" id="luBackBtn">\u2039 Back</button>
+          <h1 class="lu-title">What do you want to get done today?</h1>
+          <p class="lu-sub">Add everything on your plate \u2014 I'll fit it around your routine.</p>
+          <div class="lu-task-list">
+            ${levelUpTasks.length === 0 ? '<div class="empty-note">No tasks added yet.</div>' : levelUpTasks.map((t,i) => `
+              <div class="lu-task-item"><span>${escapeAttr(t)}</span><button data-rm-task="${i}">\u2715</button></div>
+            `).join('')}
+          </div>
+          <div class="lu-add-task-row">
+            <input type="text" id="luTaskInput" placeholder="Add a task...">
+            <button id="luAddTaskBtn">+ Add</button>
+          </div>
+          ${levelUpError ? `<div class="lu-error">${escapeAttr(levelUpError)}</div>` : ''}
+          <button class="lu-primary-btn" id="luGeneratePlanBtn" ${levelUpTasks.length===0?'disabled':''}>\u2728 Build my plan</button>
+        </div>
+      `;
+    } else if(levelUpStep === 'plan'){
+      if(levelUpLoading){
+        root.innerHTML = `<div class="levelup-page"><div class="lu-loading"><div class="spin">\u2728</div>Building your optimal day...</div></div>`;
+        return;
+      }
+      root.innerHTML = `
+        <div class="levelup-page">
+          <h1 class="lu-title">Your plan for today</h1>
+          <p class="lu-sub">Built around your ${escapeAttr(levelUpCategory)} routine</p>
+          <div class="lu-timeline">
+            ${levelUpPlan.map(b => `
+              <div class="lu-block">
+                <div class="time">${escapeAttr(b.time||'')}</div>
+                <div><div class="task">${escapeAttr(b.task||'')}</div><div class="note">${escapeAttr(b.note||'')}</div></div>
+              </div>
+            `).join('')}
+          </div>
+          <button class="lu-primary-btn" id="luStartOverBtn">Start over</button>
+        </div>
+      `;
+    }
+  }
 
   function defaultData(){
     return {
@@ -834,6 +1055,10 @@
 
   function renderPage(){
     const root = document.getElementById('pageRoot');
+    if(section === 'levelup'){
+      renderLevelUp();
+      return;
+    }
     if(page === 'tracker'){
       root.innerHTML = `
         <div class="hero">
@@ -899,6 +1124,10 @@
       const h = data.habits.find(h => h.id === id);
       if(h){ h.name = e.target.value; scheduleSave(); }
     }
+    if(e.target.matches('[data-qidx]')){
+      const idx = Number(e.target.getAttribute('data-qidx'));
+      levelUpAnswers[idx] = e.target.value;
+    }
   });
 
   document.addEventListener('click', (e) => {
@@ -927,6 +1156,65 @@
     }
     if(t.id === 'reminderDoBtn'){ resolveReminder('do'); return; }
     if(t.id === 'reminderIgnoreBtn'){ resolveReminder('ignore'); return; }
+
+    if(t.matches('[data-section]')){
+      section = t.getAttribute('data-section');
+      if(section === 'levelup') resetLevelUp();
+      renderSectionNav();
+      renderPage();
+      return;
+    }
+    const catBtn = t.closest('[data-cat]');
+    if(catBtn){
+      const cat = catBtn.getAttribute('data-cat');
+      if(cat === 'others'){
+        levelUpStep = 'others-sub';
+        renderPage();
+      } else {
+        levelUpCategory = cat;
+        generateLevelUpQuestions();
+      }
+      return;
+    }
+    if(t.id === 'luOtherBtn'){
+      const val = document.getElementById('luOtherInput').value.trim();
+      if(val){ levelUpCategory = val; generateLevelUpQuestions(); }
+      return;
+    }
+    if(t.id === 'luBackBtn'){
+      if(levelUpStep === 'others-sub') levelUpStep = 'category';
+      else if(levelUpStep === 'questions') levelUpStep = 'category';
+      else if(levelUpStep === 'tasks') levelUpStep = 'questions';
+      levelUpError = '';
+      renderPage();
+      return;
+    }
+    if(t.id === 'luQuestionsContinueBtn'){
+      levelUpStep = 'tasks';
+      renderPage();
+      return;
+    }
+    if(t.id === 'luAddTaskBtn'){
+      const input = document.getElementById('luTaskInput');
+      const val = input.value.trim();
+      if(val){ levelUpTasks.push(val); input.value=''; renderPage(); }
+      return;
+    }
+    if(t.matches('[data-rm-task]')){
+      const idx = Number(t.getAttribute('data-rm-task'));
+      levelUpTasks.splice(idx,1);
+      renderPage();
+      return;
+    }
+    if(t.id === 'luGeneratePlanBtn'){
+      if(levelUpTasks.length > 0) generateLevelUpPlan();
+      return;
+    }
+    if(t.id === 'luStartOverBtn'){
+      resetLevelUp();
+      renderPage();
+      return;
+    }
     if(t.matches('[data-addline]')){
       const list = t.getAttribute('data-addline');
       data[list].push('');
@@ -1010,6 +1298,12 @@
   document.addEventListener('keydown', (e) => {
     if(e.key === 'Enter' && e.target.id === 'newHabitInput'){
       document.getElementById('addHabitBtn').click();
+    }
+    if(e.key === 'Enter' && e.target.id === 'luTaskInput'){
+      document.getElementById('luAddTaskBtn').click();
+    }
+    if(e.key === 'Enter' && e.target.id === 'luOtherInput'){
+      document.getElementById('luOtherBtn').click();
     }
   });
 
@@ -1096,6 +1390,7 @@
     data = await loadData();
     applyTheme();
     renderTopBar();
+    renderSectionNav();
     renderPage();
     checkAutoReports();
     clearInterval(reminderCheckInterval);
