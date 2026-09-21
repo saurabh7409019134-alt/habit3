@@ -451,6 +451,7 @@
   let growthSubLoading = true;
   let growthPayTier = null; // which tier the user is paying for right now
   let growthUpiRefInput = '';
+  let growthPaymentJustSubmitted = false;
   let growthFreeSpotsLeft = null; // fetched count of remaining free-year spots
   let isGrowthAdmin = false;
   let growthAdminSubmissions = [];
@@ -646,6 +647,7 @@
       const { data: row, error } = await sb.rpc('claim_free_year');
       if(error) throw error;
       growthSubscription = row;
+      growthStep = data.growth.habits.length > 0 ? 'dashboard' : 'category';
     }catch(e){
       growthError = e.message && e.message.includes('free_tier_full')
         ? 'All 200 free spots have been claimed.'
@@ -671,6 +673,7 @@
       growthPayTier = null;
       growthUpiRefInput = '';
       growthError = '';
+      growthPaymentJustSubmitted = true;
     }catch(e){
       growthError = "Couldn't submit your payment — try again.";
     }
@@ -1233,6 +1236,7 @@
         <h1 class="gr-title">Growth</h1>
         <p class="gr-sub">AI-powered day planning and habit building toward your goals.</p>
         ${growthError ? `<div class="gr-error">${escapeAttr(growthError)}</div>` : ''}
+        ${growthPaymentJustSubmitted ? `<div class="gr-free-banner"><div>\u2713 Payment submitted \u2014 we'll verify and activate your plan within 24 hours.</div></div>` : ''}
         ${growthFreeSpotsLeft !== null && growthFreeSpotsLeft > 0 ? `
           <div class="gr-free-banner">
             <div><strong>${growthFreeSpotsLeft} of 200 free spots left</strong> \u2014 full access, free for 1 year</div>
@@ -1567,6 +1571,7 @@
       renderSectionNav();
       if(section === 'growth'){
         growthStep = 'loading';
+        growthPaymentJustSubmitted = false;
         renderPage();
         loadGrowthSubscription().then(() => {
           const access = growthAccessInfo();
