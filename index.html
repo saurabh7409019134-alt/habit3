@@ -128,71 +128,41 @@
   .logout-btn{border:1px solid var(--card-border);background:var(--card-bg);color:var(--ink);padding:8px 16px;border-radius:999px;font-size:13px;cursor:pointer;}
   .logout-btn:hover{background:var(--month-btn-bg-hover);}
 
-  /* ---------- GROWTH ---------- */
+  /* ---------- WINTER ARC ---------- */
   .section-nav{margin-bottom:16px;}
-  .growth-page{max-width:720px;margin:0 auto;}
-  .gr-title{font-family:var(--serif);font-size:30px;margin:6px 0 4px;text-align:center;color:var(--ink);}
-  .gr-sub{color:var(--ink-soft);font-size:14px;text-align:center;margin:0 0 22px;}
-  .gr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:18px;}
-  .gr-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius-md);padding:22px 12px;text-align:center;cursor:pointer;font-family:var(--sans);font-size:14px;font-weight:600;color:var(--ink);box-shadow:var(--shadow);transition:transform .15s ease, border-color .15s ease;}
-  .gr-card:hover{transform:translateY(-2px);border-color:var(--input-border-focus);}
-  .gr-card span{display:block;margin-top:8px;}
-  .gr-card .emj{font-size:28px;}
-  .gr-back{border:1px solid var(--card-border);background:var(--card-bg);color:var(--ink);padding:8px 16px;border-radius:999px;font-size:13px;cursor:pointer;margin-bottom:16px;}
-  .gr-back:hover{background:var(--month-btn-bg-hover);}
-  .gr-other-row{display:flex;gap:8px;margin-top:6px;}
-  .gr-other-row input{flex:1;border:1px dashed var(--dashed-border);background:var(--input-bg);color:var(--ink);border-radius:999px;padding:10px 16px;font-size:13.5px;outline:none;}
-  .gr-other-row button{border:none;background:var(--ink);color:var(--bg-base);padding:10px 18px;border-radius:999px;font-size:13px;cursor:pointer;font-weight:600;}
-  .gr-q{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius-md);padding:12px 16px;margin-bottom:10px;}
-  .gr-q label{display:block;font-size:13.5px;color:var(--ink);margin-bottom:6px;}
-  .gr-q input{width:100%;box-sizing:border-box;border:1px solid var(--input-border);background:var(--input-bg);color:var(--ink);border-radius:8px;padding:9px 12px;font-size:13.5px;outline:none;}
-  .gr-q input:focus{border-color:var(--input-border-focus);}
-  .gr-primary-btn{width:100%;border:none;background:linear-gradient(90deg, var(--pill-a), var(--pill-b));color:#04170d;padding:13px;border-radius:999px;font-size:14px;font-weight:700;cursor:pointer;margin-top:8px;}
-  .gr-primary-btn:hover{opacity:0.9;}
-  .gr-primary-btn:disabled{opacity:0.5;cursor:default;}
-  .gr-task-list{margin-bottom:14px;}
-  .gr-task-item{display:flex;align-items:center;gap:10px;background:var(--card-bg);border:1px solid var(--card-border);border-radius:999px;padding:10px 16px;margin-bottom:8px;font-size:13.5px;color:var(--ink);}
-  .gr-task-item span{flex:1;}
-  .gr-task-item button{border:none;background:none;color:var(--rm-color);cursor:pointer;font-size:15px;}
-  .gr-task-item button:hover{color:var(--red);}
-  .gr-add-task-row{display:flex;gap:8px;margin-bottom:18px;}
-  .gr-add-task-row input{flex:1;border:1px dashed var(--dashed-border);background:var(--input-bg);color:var(--ink);border-radius:999px;padding:10px 16px;font-size:13.5px;outline:none;}
-  .gr-add-task-row button{border:none;background:var(--card-bg);border:1px solid var(--card-border);color:var(--ink);padding:10px 18px;border-radius:999px;font-size:13px;cursor:pointer;}
-  .gr-loading{text-align:center;padding:50px 10px;color:var(--ink-soft);font-size:14px;}
-  .gr-loading .spin{font-size:30px;display:inline-block;animation:grSpin 1s linear infinite;margin-bottom:10px;}
-  @keyframes grSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
-  .gr-error{color:var(--red);font-size:13px;text-align:center;margin:10px 0;}
-  .gr-timeline{margin-bottom:18px;}
-  .gr-block{display:flex;gap:14px;background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius-md);padding:14px 16px;margin-bottom:10px;align-items:flex-start;}
-  .gr-block .time{font-family:var(--serif);font-weight:700;font-size:14px;color:var(--ink);min-width:82px;flex:none;}
-  .gr-block .task{font-size:14px;color:var(--ink);font-weight:600;margin-bottom:2px;}
-  .gr-block .note{font-size:12.5px;color:var(--ink-soft);}
-  .gr-dash-actions{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
-  .gr-dash-actions button{border:1px solid var(--card-border);background:var(--card-bg);color:var(--ink);padding:9px 16px;border-radius:999px;font-size:13px;cursor:pointer;font-weight:600;}
-  .gr-dash-actions button:hover{background:var(--month-btn-bg-hover);}
-  .gr-usage-banner{background:var(--card-bg);border:1px solid var(--card-border);border-radius:999px;padding:8px 16px;font-size:12.5px;color:var(--ink-soft);text-align:center;margin-bottom:16px;}
-  .gr-free-banner{background:linear-gradient(135deg, var(--pill-a), var(--pill-b));border-radius:var(--radius-md);padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:20px;color:#fff;font-size:13.5px;}
-  .gr-free-banner button{border:none;background:var(--ink);color:var(--bg-base);padding:10px 18px;border-radius:999px;font-size:13px;font-weight:700;cursor:pointer;flex:none;}
-  .gr-tier-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:18px;}
-  .gr-tier-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius-md);padding:20px 14px;text-align:center;box-shadow:var(--shadow);}
-  .gr-tier-name{font-family:var(--serif);font-size:17px;color:var(--ink);margin-bottom:6px;}
-  .gr-tier-price{font-size:24px;font-weight:800;color:var(--ink);margin-bottom:4px;}
-  .gr-tier-price span{font-size:12px;font-weight:500;color:var(--ink-soft);}
-  .gr-tier-limit{font-size:12.5px;color:var(--ink-soft);margin-bottom:14px;}
-  .gr-tier-card button{width:100%;border:none;background:var(--ink);color:var(--bg-base);padding:10px;border-radius:999px;font-size:13px;font-weight:700;cursor:pointer;}
-  .gr-tier-card button:hover{opacity:0.9;}
-  .gr-pay-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius-md);padding:22px;text-align:center;}
-  .gr-qr{width:200px;height:200px;border-radius:12px;margin-bottom:12px;background:#fff;padding:8px;box-sizing:border-box;}
-  .gr-upi-id{font-size:13.5px;color:var(--ink);margin:0 0 10px;}
-  .gr-pay-note{font-size:12.5px;color:var(--ink-soft);margin:0 0 14px;}
-  .gr-pay-box input{width:100%;box-sizing:border-box;border:1px solid var(--input-border);background:var(--input-bg);color:var(--ink);border-radius:8px;padding:10px 12px;font-size:13.5px;margin-bottom:10px;outline:none;text-align:center;}
-  .gr-admin-row{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius-md);padding:14px 16px;margin-bottom:10px;flex-wrap:wrap;}
-  .gr-admin-info{font-size:13px;color:var(--ink);line-height:1.5;}
-  .gr-admin-ref{color:var(--ink-soft);font-family:monospace;}
-  .gr-admin-date{color:var(--ink-soft);font-size:11.5px;}
-  .gr-admin-actions{display:flex;gap:8px;flex:none;}
-  .gr-admin-actions button{border:1px solid var(--card-border);background:var(--bg-base);color:var(--ink);padding:8px 14px;border-radius:999px;font-size:12.5px;cursor:pointer;font-weight:600;}
-  .gr-admin-actions button:hover{background:var(--month-btn-bg-hover);}
+  .wa-page{max-width:560px;margin:0 auto;}
+  .wa-page h1.wa-title{font-family:var(--serif);font-weight:800;font-size:24px;margin:0 0 2px;color:var(--ink);}
+  .wa-sub{color:var(--ink-soft);font-size:13px;margin:0 0 16px;}
+  .wa-stats{display:flex;gap:10px;margin-bottom:16px;}
+  .wa-stat{flex:1;background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius-sm);padding:10px 12px;text-align:left;}
+  .wa-stat b{display:block;font-size:20px;font-family:var(--serif);color:var(--ink);}
+  .wa-stat span{font-size:11.5px;color:var(--ink-soft);}
+  .wa-bar{height:7px;background:var(--cell-border);border-radius:4px;overflow:hidden;margin-bottom:18px;}
+  .wa-bar i{display:block;height:100%;background:#38bdf8;width:0;}
+  .wa-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+  .wa-nav button{border:1px solid var(--card-border);background:var(--card-bg);color:var(--ink);border-radius:10px;width:40px;height:40px;font-size:16px;cursor:pointer;}
+  .wa-nav button:disabled{opacity:0.35;cursor:default;}
+  .wa-nav div{text-align:center;}
+  .wa-nav strong{font:700 16px var(--serif);display:block;color:var(--ink);}
+  .wa-nav small{color:var(--ink-soft);font-size:11.5px;}
+  .wa-phase{font-size:12px;color:#38bdf8;font-weight:700;margin:0 0 12px;text-align:center;text-transform:uppercase;letter-spacing:0.03em;}
+  .wa-tasks{list-style:none;margin:0 0 16px;padding:0;}
+  .wa-tasks li{margin-bottom:8px;}
+  .wa-tasks label{display:flex;gap:12px;align-items:center;background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius-sm);padding:13px 14px;cursor:pointer;min-height:48px;}
+  .wa-tasks input{width:20px;height:20px;accent-color:#38bdf8;flex:none;}
+  .wa-tasks input:checked+span{text-decoration:line-through;color:var(--ink-soft);}
+  .wa-tasks span{color:var(--ink);font-size:13.5px;}
+  .wa-note{font-size:12.5px;color:var(--ink-soft);background:var(--card-bg);border-left:3px solid #38bdf8;padding:10px 12px;border-radius:0 8px 8px 0;margin-bottom:18px;}
+  .wa-page h2{font-size:14px;margin:0 0 8px;color:var(--ink);font-weight:700;}
+  .wa-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;margin-bottom:8px;}
+  .wa-grid button{aspect-ratio:1;border:0;border-radius:5px;background:var(--cell-border);color:var(--ink-soft);font:600 10px var(--sans);cursor:pointer;padding:0;}
+  .wa-grid button.done{background:#38bdf8;color:#04170d;}
+  .wa-grid button.past{background:var(--red-bg);color:var(--red);}
+  .wa-grid button.sel{outline:2px solid var(--ink);outline-offset:1px;}
+  .wa-grid button.today{box-shadow:0 0 0 2px var(--flame);}
+  .wa-legend{font-size:11px;color:var(--ink-soft);margin-bottom:20px;}
+  .wa-set{font-size:13px;color:var(--ink-soft);display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  .wa-set input{border:1px solid var(--input-border);background:var(--input-bg);color:var(--ink);border-radius:8px;padding:7px 10px;font:inherit;}
 
   /* ---------- 6PM REMINDER ---------- */
   .reminder-overlay{position:fixed;inset:0;background:rgba(20,10,30,0.5);display:flex;align-items:center;justify-content:center;z-index:80;padding:20px;}
@@ -435,37 +405,26 @@
   let pendingReportQueue = [];
   let saveTimer = null;
 
-  let section = 'tracker'; // 'tracker' | 'growth'
-  let growthStep = 'category'; // category | others-sub | questions | tasks | plan | dashboard
-  let growthCategory = null;
-  let growthQuestions = [];
-  let growthAnswers = [];
-  let growthTasks = [];
-  let growthPlan = [];
-  let growthLoading = false;
-  let growthError = '';
-  let growthViewMode = 'monthly';
-  let growthMonthCursor = startOfDay(new Date());
-  let growthWeekCursor = getMonday(new Date());
-  let growthSubscription = null; // fetched row from growth_subscriptions, or {tier:'none'} if none
-  let growthSubLoading = true;
-  let growthPayTier = null; // which tier the user is paying for right now
-  let growthUpiRefInput = '';
-  let growthPaymentJustSubmitted = false;
-  let growthFreeSpotsLeft = null; // fetched count of remaining free-year spots
-  let isGrowthAdmin = false;
-  let growthAdminSubmissions = [];
-  const GROWTH_ADMIN_EMAIL = 'saurabh.7409019134@gmail.com';
-  const GROWTH_UPI_ID = '7906115793@ptyes';
-  const GROWTH_TIERS = {
-    basic:    { label: 'Basic',    price: 20, limit: 10,       months: 1 },
-    standard: { label: 'Standard', price: 27, limit: 25,       months: 1 },
-    premium:  { label: 'Premium',  price: 30, limit: Infinity, months: 1 },
-    free_year:{ label: 'Free Year',price: 0,  limit: Infinity, months: 12 }
+  let section = 'tracker'; // 'tracker' | 'winterArc'
+  let winterArcSel = 0; // selected day index, 0-89
+
+  const WINTER_TASKS = {
+    1:["Script 1 YouTube video","Script 4 Reels"],
+    2:["Film the YouTube video"],
+    3:["Edit and publish the YouTube video"],
+    4:["Film and post 2 Reels"],
+    5:["Learn AI (only things you can turn into content)"],
+    6:["Film and post 2 Reels","Spark-OS maintenance (2 hours, nothing new)"],
+    0:["Check analytics: best hook and topic","Rest"]
   };
-
-
-
+  const WINTER_FIRST = "Content task done before anything else";
+  const WINTER_NOTES = {
+    30:"Day 30 review: did you post every week? Which pillar got the best watch time?",
+    60:"Day 60 review: pick your main pillar (about 60% of posts). Study your top 3 videos.",
+    90:"Day 90 review: decide about Spark-OS outreach and BCA using the trigger you set, not a bad week.",
+    31:"Days 31-60: double down on what worked.",
+    61:"Days 61-90: build a series from your best topic. Last 2 weeks: light Spark-OS outreach."
+  };
 
   function defaultData(){
     return {
@@ -483,7 +442,7 @@
       theme: 'light',
       reminder: { date: null, attempt: 0, firstAttemptAt: null, done: false },
       notifyEnabled: false,
-      growth: { category: null, habits: [], statuses: {}, plan: [] }
+      winterArc: { startDate: null, done: {} }
     };
   }
 
@@ -566,233 +525,26 @@
     return { current, best: Math.max(best, current) };
   }
 
-  // ---------- growth: status helpers (mirrors the main tracker but scoped to data.growth) ----------
-  const growthStatusKey = (habitId, date) => habitId + '::' + dateKey(date);
-  function growthEffectiveStatus(habitId, date){
-    const stored = data.growth.statuses[growthStatusKey(habitId,date)];
-    if(stored === 'done') return 'done';
-    const today = startOfDay(new Date());
-    const d = startOfDay(date);
-    if(d.getTime() > today.getTime()) return 'future';
-    if(d.getTime() < today.getTime()) return 'missed';
-    return 'pending';
+  // ---------- winter arc: 90-day tracker logic ----------
+  function waIso(d){ return d.getUTCFullYear()+"-"+String(d.getUTCMonth()+1).padStart(2,"0")+"-"+String(d.getUTCDate()).padStart(2,"0"); }
+  function waTodayIso(){ const n=new Date(); return n.getFullYear()+"-"+String(n.getMonth()+1).padStart(2,"0")+"-"+String(n.getDate()).padStart(2,"0"); }
+  function waMs(s){ const p=s.split("-"); return Date.UTC(+p[0],+p[1]-1,+p[2]); }
+  function waDateOf(i){ return new Date(waMs(data.winterArc.startDate) + i*864e5); }
+  function waListFor(i){ return [WINTER_FIRST].concat(WINTER_TASKS[waDateOf(i).getUTCDay()]); }
+  function waTicks(i){
+    const n = waListFor(i).length;
+    const a = data.winterArc.done['d'+i] || [];
+    const r = [];
+    for(let k=0;k<n;k++) r.push(!!a[k]);
+    return r;
   }
-  function toggleGrowthStatus(habitId, date){
-    const eff = growthEffectiveStatus(habitId, date);
-    if(eff === 'future') return;
-    const key = growthStatusKey(habitId, date);
-    if(eff === 'done') delete data.growth.statuses[key];
-    else data.growth.statuses[key] = 'done';
+  function waComplete(i){ return waTicks(i).every(Boolean); }
+  function waTodayIdx(){ return Math.floor((waMs(waTodayIso()) - waMs(data.winterArc.startDate)) / 864e5); }
+  function waToggleTask(dayIdx, taskIdx){
+    const a = waTicks(dayIdx);
+    a[taskIdx] = !a[taskIdx];
+    data.winterArc.done['d'+dayIdx] = a;
     scheduleSave();
-  }
-  function growthDayCompletionPct(date){
-    if(data.growth.habits.length === 0) return null;
-    const today = startOfDay(new Date());
-    if(startOfDay(date).getTime() > today.getTime()) return null;
-    let done = 0;
-    data.growth.habits.forEach(h => { if(growthEffectiveStatus(h.id, date) === 'done') done++; });
-    return (done / data.growth.habits.length) * 100;
-  }
-
-  // ---------- growth: AI calls ----------
-  async function callGrowthAI(promptText){
-    const response = await fetch('https://zfpcfibranwzzbpydgxp.supabase.co/functions/v1/call-google-ai', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt: promptText })
-    });
-    const json = await response.json();
-    if(json.error) throw new Error(json.error);
-    return json;
-  }
-
-  // ---------- growth: subscription & payments ----------
-  function growthAccessInfo(){
-    if(!growthSubscription || growthSubscription.status !== 'active'){
-      return { active: false, remaining: 0, tier: null };
-    }
-    const expires = growthSubscription.expires_at ? new Date(growthSubscription.expires_at) : null;
-    if(expires && expires.getTime() < Date.now()){
-      return { active: false, remaining: 0, tier: growthSubscription.tier, expired: true };
-    }
-    const cfg = GROWTH_TIERS[growthSubscription.tier] || { limit: 0 };
-    const used = growthSubscription.ai_uses_this_period || 0;
-    const remaining = cfg.limit === Infinity ? Infinity : Math.max(0, cfg.limit - used);
-    return { active: true, remaining, tier: growthSubscription.tier, limit: cfg.limit, used };
-  }
-
-  async function loadGrowthSubscription(){
-    growthSubLoading = true;
-    isGrowthAdmin = false;
-    try{
-      const { data: sessionData } = await sb.auth.getSession();
-      const email = sessionData && sessionData.session ? sessionData.session.user.email : null;
-      isGrowthAdmin = email === GROWTH_ADMIN_EMAIL;
-      const { data: row } = await sb.from('growth_subscriptions').select('*').eq('user_id', currentUserId).maybeSingle();
-      growthSubscription = row || { tier: null, status: 'none' };
-      if(!growthAccessInfo().active){
-        const { count } = await sb.from('growth_subscriptions').select('user_id', { count: 'exact', head: true }).eq('tier', 'free_year');
-        growthFreeSpotsLeft = typeof count === 'number' ? Math.max(0, 200 - count) : null;
-      }
-    }catch(e){
-      growthSubscription = { tier: null, status: 'none' };
-    }
-    growthSubLoading = false;
-  }
-
-  async function claimFreeYear(){
-    growthSubLoading = true;
-    renderPage();
-    try{
-      const { data: row, error } = await sb.rpc('claim_free_year');
-      if(error) throw error;
-      growthSubscription = row;
-      growthStep = data.growth.habits.length > 0 ? 'dashboard' : 'category';
-    }catch(e){
-      growthError = e.message && e.message.includes('free_tier_full')
-        ? 'All 200 free spots have been claimed.'
-        : "Couldn't claim your free year — try again.";
-    }
-    growthSubLoading = false;
-    renderPage();
-  }
-
-  async function submitUpiPayment(){
-    const ref = growthUpiRefInput.trim();
-    if(!ref || !growthPayTier){ growthError = 'Enter your UPI transaction reference.'; renderPage(); return; }
-    growthSubLoading = true;
-    renderPage();
-    try{
-      const { data: sessionData } = await sb.auth.getSession();
-      const email = sessionData && sessionData.session ? sessionData.session.user.email : null;
-      const cfg = GROWTH_TIERS[growthPayTier];
-      const { error } = await sb.from('growth_payment_submissions').insert({
-        user_id: currentUserId, user_email: email, tier: growthPayTier, amount: cfg.price, upi_ref: ref
-      });
-      if(error) throw error;
-      growthPayTier = null;
-      growthUpiRefInput = '';
-      growthError = '';
-      growthPaymentJustSubmitted = true;
-    }catch(e){
-      growthError = "Couldn't submit your payment — try again.";
-    }
-    growthSubLoading = false;
-    renderPage();
-  }
-
-  async function loadGrowthAdminSubmissions(){
-    growthSubLoading = true;
-    renderPage();
-    try{
-      const { data: rows, error } = await sb.from('growth_payment_submissions').select('*').eq('status','pending').order('submitted_at', { ascending: true });
-      if(error) throw error;
-      growthAdminSubmissions = rows || [];
-    }catch(e){
-      growthAdminSubmissions = [];
-    }
-    growthSubLoading = false;
-    renderPage();
-  }
-
-  async function approveGrowthSubmission(id, tier){
-    growthSubLoading = true;
-    renderPage();
-    try{
-      const months = GROWTH_TIERS[tier] ? GROWTH_TIERS[tier].months : 1;
-      const { error } = await sb.rpc('admin_approve_payment', { submission_id: id, months });
-      if(error) throw error;
-      await loadGrowthAdminSubmissions();
-      return;
-    }catch(e){
-      growthError = "Couldn't approve — try again.";
-    }
-    growthSubLoading = false;
-    renderPage();
-  }
-
-  async function rejectGrowthSubmission(id){
-    growthSubLoading = true;
-    renderPage();
-    try{
-      await sb.from('growth_payment_submissions').update({ status:'rejected', reviewed_at: new Date().toISOString() }).eq('id', id);
-      await loadGrowthAdminSubmissions();
-      return;
-    }catch(e){}
-    growthSubLoading = false;
-    renderPage();
-  }
-
-  function resetGrowthWizard(){
-    growthStep = 'category';
-    growthCategory = null;
-    growthQuestions = [];
-    growthAnswers = [];
-    growthTasks = [];
-    growthPlan = [];
-    growthLoading = false;
-    growthError = '';
-  }
-
-  async function generateGrowthQuestions(){
-    growthLoading = true; growthError = '';
-    renderPage();
-    try{
-      const prompt = `You are helping someone plan a genuinely productive day. Their category: "${growthCategory}". Generate exactly 12 short, specific questions to learn their daily routine, fixed commitments, energy patterns, and priorities so their day can be scheduled well (e.g. wake time, commute/class/work hours, deadlines, when they focus best, their main goal right now). Respond with ONLY a JSON array of 12 short question strings. No markdown, no explanation, just the JSON array.`;
-      const qs = await callGrowthAI(prompt);
-      growthQuestions = Array.isArray(qs) ? qs.slice(0,15) : [];
-      growthAnswers = new Array(growthQuestions.length).fill('');
-      growthStep = 'questions';
-    }catch(e){
-      growthError = "Couldn't generate questions — try again. (" + e.message + ")";
-    }
-    growthLoading = false;
-    renderPage();
-  }
-
-  async function generateGrowthPlan(){
-    const access = growthAccessInfo();
-    if(!access.active){
-      growthError = 'You need an active Growth plan to generate a day plan.';
-      growthStep = 'paywall';
-      renderPage();
-      return;
-    }
-    if(access.remaining <= 0){
-      growthError = `You've used all ${access.limit} plans for this period. Upgrade or wait for your next period.`;
-      growthStep = 'paywall';
-      renderPage();
-      return;
-    }
-    growthLoading = true; growthError = '';
-    renderPage();
-    try{
-      const qa = growthQuestions.map((q,i)=>`${i+1}. Q: ${q}\n   A: ${growthAnswers[i] || '(not answered)'}`).join('\n');
-      const taskList = growthTasks.map(t=>`- ${t}`).join('\n');
-      const prompt = `Category: "${growthCategory}"\n\nTheir answers about their routine and goals:\n${qa}\n\nTasks they want to fit into today:\n${taskList}\n\nDo two things:\n1) Build the best possible schedule for their day: fit these tasks around their fixed commitments/routine above, choosing good timing for each (demanding/focus tasks at their best-energy times, respecting deadlines and fixed commitments, including short breaks).\n2) Suggest 3-6 short daily HABITS (not one-off tasks) that would help them make real progress on their stated goal over weeks/months, each with a matching single emoji.\n\nRespond with ONLY this JSON shape, no markdown, no explanation:\n{"plan":[{"time":"7:00 AM","task":"short label","note":"short reason, under 12 words"}],"habits":[{"name":"short habit name","emoji":"\ud83c\udfaf"}]}\nMax 15 plan items, max 6 habits.`;
-      const result = await callGrowthAI(prompt);
-      growthPlan = Array.isArray(result.plan) ? result.plan.slice(0,15) : [];
-      const suggested = Array.isArray(result.habits) ? result.habits.slice(0,6) : [];
-      // Merge suggested habits into the persisted growth habit list, skipping ones already there by name
-      const existingNames = new Set(data.growth.habits.map(h => h.name.toLowerCase().trim()));
-      suggested.forEach(h => {
-        if(h && h.name && !existingNames.has(h.name.toLowerCase().trim())){
-          data.growth.habits.push({ id: 'g' + Date.now() + Math.random().toString(36).slice(2,7), name: h.name, emoji: h.emoji || '\u2728' });
-          existingNames.add(h.name.toLowerCase().trim());
-        }
-      });
-      data.growth.category = growthCategory;
-      data.growth.plan = growthPlan;
-      scheduleSave();
-      const newUsed = (growthSubscription.ai_uses_this_period || 0) + 1;
-      growthSubscription.ai_uses_this_period = newUsed;
-      sb.from('growth_subscriptions').update({ ai_uses_this_period: newUsed, updated_at: new Date().toISOString() }).eq('user_id', currentUserId).then(()=>{});
-      growthStep = 'plan';
-    }catch(e){
-      growthError = "Couldn't build your plan — try again. (" + e.message + ")";
-    }
-    growthLoading = false;
-    renderPage();
   }
 
   // ---------- 6pm reminder: sound ----------
@@ -944,7 +696,7 @@
     el.innerHTML = `
       <div class="view-toggle">
         <button data-section="tracker" class="${section==='tracker'?'active':''}">\ud83d\uddd3\ufe0f Tracker</button>
-        <button data-section="growth" class="${section==='growth'?'active':''}">\ud83c\udf31 Growth</button>
+        <button data-section="winterArc" class="${section==='winterArc'?'active':''}">\u2744\ufe0f Winter Arc</button>
       </div>
     `;
   }
@@ -1179,285 +931,82 @@
     `;
   }
 
-  const GR_MAIN_CATS = [
-    ['Productivity','\ud83d\udcc8'],
-    ['Balance Life','\u2696\ufe0f'],
-    ['School Going','\ud83c\udf92'],
-    ['College Going','\ud83c\udf93'],
-    ['Working Professional','\ud83d\udcbc'],
-    ['others','\u2728']
-  ];
-  const GR_OTHER_CATS = [
-    ['Content Creator','\ud83c\udfa5'],
-    ['Video Editor','\u2702\ufe0f'],
-    ['Graphic Designer','\ud83c\udfa8'],
-    ['Business Owner','\ud83c\udfe2'],
-    ['Shop Owner','\ud83c\udfec']
-  ];
+  const WD_NAMES = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
-  function renderGrowthUsageBanner(){
-    const access = growthAccessInfo();
-    if(!access.active) return '';
-    const tierLabel = GROWTH_TIERS[access.tier] ? GROWTH_TIERS[access.tier].label : access.tier;
-    const remText = access.remaining === Infinity ? 'Unlimited plans' : `${access.remaining} plan${access.remaining===1?'':'s'} left this period`;
-    return `<div class="gr-usage-banner">${escapeAttr(tierLabel)} plan \u2014 ${remText}</div>`;
-  }
-
-  function renderGrowthPaywall(root){
-    if(growthSubLoading){
-      root.innerHTML = `<div class="growth-page"><div class="gr-loading"><div class="spin">\ud83c\udf31</div>One moment...</div></div>`;
-      return;
-    }
-    if(growthPayTier){
-      const cfg = GROWTH_TIERS[growthPayTier];
-      const upiAmount = cfg.price;
-      const upiUri = `upi://pay?pa=${encodeURIComponent(GROWTH_UPI_ID)}&pn=${encodeURIComponent('KeepIt Growth')}&am=${upiAmount}&cu=INR`;
-      const qrImg = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(upiUri)}`;
-      root.innerHTML = `
-        <div class="growth-page">
-          <button class="gr-back" id="growthBackToPaywallBtn">\u2039 Back</button>
-          <h1 class="gr-title">Pay for ${escapeAttr(cfg.label)}</h1>
-          <p class="gr-sub">\u20b9${cfg.price}/month \u2014 ${cfg.limit === Infinity ? 'unlimited' : cfg.limit} AI plans</p>
-          <div class="gr-pay-box">
-            <img src="${qrImg}" alt="UPI QR code" class="gr-qr">
-            <p class="gr-upi-id">Or pay directly to: <strong>${escapeAttr(GROWTH_UPI_ID)}</strong></p>
-            <p class="gr-pay-note">After paying, enter the UPI transaction reference number from your payment app below. We'll verify and activate your plan manually within 24 hours.</p>
-            <input type="text" id="growthUpiRefInput" value="${escapeAttr(growthUpiRefInput)}" placeholder="UPI transaction reference number">
-            ${growthError ? `<div class="gr-error">${escapeAttr(growthError)}</div>` : ''}
-            <button class="gr-primary-btn" id="growthSubmitPaymentBtn">Submit payment</button>
-          </div>
-        </div>
-      `;
-      return;
-    }
-    const tierKeys = ['basic','standard','premium'];
-    root.innerHTML = `
-      <div class="growth-page">
-        <h1 class="gr-title">Growth</h1>
-        <p class="gr-sub">AI-powered day planning and habit building toward your goals.</p>
-        ${growthError ? `<div class="gr-error">${escapeAttr(growthError)}</div>` : ''}
-        ${growthPaymentJustSubmitted ? `<div class="gr-free-banner"><div>\u2713 Payment submitted \u2014 we'll verify and activate your plan within 24 hours.</div></div>` : ''}
-        ${growthFreeSpotsLeft !== null && growthFreeSpotsLeft > 0 ? `
-          <div class="gr-free-banner">
-            <div><strong>${growthFreeSpotsLeft} of 200 free spots left</strong> \u2014 full access, free for 1 year</div>
-            <button id="growthClaimFreeBtn">Claim my free year</button>
-          </div>
-        ` : ''}
-        <div class="gr-tier-grid">
-          ${tierKeys.map(k => {
-            const cfg = GROWTH_TIERS[k];
-            return `
-              <div class="gr-tier-card">
-                <div class="gr-tier-name">${escapeAttr(cfg.label)}</div>
-                <div class="gr-tier-price">\u20b9${cfg.price}<span>/month</span></div>
-                <div class="gr-tier-limit">${cfg.limit === Infinity ? 'Unlimited' : cfg.limit} AI plans</div>
-                <button data-gtier="${k}">Choose ${escapeAttr(cfg.label)}</button>
-              </div>
-            `;
-          }).join('')}
-        </div>
-        ${isGrowthAdmin ? `<div class="gr-dash-actions"><button id="growthAdminViewBtn">\ud83d\udd10 Admin: review payments</button></div>` : ''}
-      </div>
-    `;
-  }
-
-  function renderGrowthAdminPanel(root){
-    if(growthSubLoading){
-      root.innerHTML = `<div class="growth-page"><div class="gr-loading"><div class="spin">\ud83c\udf31</div>Loading submissions...</div></div>`;
-      return;
-    }
-    root.innerHTML = `
-      <div class="growth-page" style="max-width:640px;">
-        <button class="gr-back" id="growthAdminBackBtn">\u2039 Back</button>
-        <h1 class="gr-title">Pending payments</h1>
-        ${growthAdminSubmissions.length === 0 ? '<div class="empty-note">No pending submissions.</div>' : growthAdminSubmissions.map(s => `
-          <div class="gr-admin-row">
-            <div class="gr-admin-info">
-              <div><strong>${escapeAttr(s.user_email || s.user_id)}</strong></div>
-              <div>${escapeAttr(GROWTH_TIERS[s.tier] ? GROWTH_TIERS[s.tier].label : s.tier)} \u2014 \u20b9${s.amount}</div>
-              <div class="gr-admin-ref">Ref: ${escapeAttr(s.upi_ref)}</div>
-              <div class="gr-admin-date">${escapeAttr(new Date(s.submitted_at).toLocaleString())}</div>
-            </div>
-            <div class="gr-admin-actions">
-              <button data-gr-approve="${s.id}" data-gr-tier="${escapeAttr(s.tier)}">\u2713 Approve</button>
-              <button data-gr-reject="${s.id}">\u2715 Reject</button>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    `;
-  }
-
-  function renderGrowth(){
+  function renderWinterArc(){
     const root = document.getElementById('pageRoot');
-    if(growthStep === 'loading'){
-      root.innerHTML = `<div class="growth-page"><div class="gr-loading"><div class="spin">\ud83c\udf31</div>Loading your Growth access...</div></div>`;
-      return;
+    if(!data.winterArc.startDate){
+      data.winterArc.startDate = waTodayIso();
+      scheduleSave();
     }
-    if(growthStep === 'paywall'){
-      renderGrowthPaywall(root);
-      return;
-    }
-    if(growthStep === 'admin'){
-      renderGrowthAdminPanel(root);
-      return;
-    }
-    if(growthStep === 'category'){
-      root.innerHTML = `
-        <div class="growth-page">
-          <h1 class="gr-title">Growth</h1>
-          <p class="gr-sub">Pick what best describes you, and AI will help you plan today and build habits toward your goal.</p>
-          ${renderGrowthUsageBanner()}
-          <div class="gr-grid">
-            ${GR_MAIN_CATS.map(([label,emj]) => `<button class="gr-card" data-gcat="${escapeAttr(label)}"><span class="emj">${emj}</span><span>${label === 'others' ? 'Others' : escapeAttr(label)}</span></button>`).join('')}
-          </div>
-          ${data.growth.habits.length > 0 ? `<div class="gr-dash-actions"><button id="growthViewDashBtn">\u2190 Back to my Growth tracker</button></div>` : ''}
-        </div>
-      `;
-    } else if(growthStep === 'others-sub'){
-      root.innerHTML = `
-        <div class="growth-page">
-          <button class="gr-back" id="growthBackBtn">\u2039 Back</button>
-          <h1 class="gr-title">What do you do?</h1>
-          <div class="gr-grid">
-            ${GR_OTHER_CATS.map(([label,emj]) => `<button class="gr-card" data-gcat="${escapeAttr(label)}"><span class="emj">${emj}</span><span>${escapeAttr(label)}</span></button>`).join('')}
-          </div>
-          <div class="gr-other-row">
-            <input type="text" id="growthOtherInput" placeholder="Or type your own...">
-            <button id="growthOtherBtn">Continue</button>
-          </div>
-        </div>
-      `;
-    } else if(growthStep === 'questions'){
-      if(growthLoading){
-        root.innerHTML = `<div class="growth-page"><div class="gr-loading"><div class="spin">\u2728</div>Thinking of the right questions for you...</div></div>`;
-        return;
-      }
-      root.innerHTML = `
-        <div class="growth-page">
-          <button class="gr-back" id="growthBackBtn">\u2039 Back</button>
-          <h1 class="gr-title">A few questions</h1>
-          <p class="gr-sub">For: ${escapeAttr(growthCategory)}</p>
-          ${growthError ? `<div class="gr-error">${escapeAttr(growthError)}</div>` : ''}
-          ${growthQuestions.map((q,i) => `
-            <div class="gr-q">
-              <label>${i+1}. ${escapeAttr(q)}</label>
-              <input type="text" data-gqidx="${i}" value="${escapeAttr(growthAnswers[i]||'')}" placeholder="Your answer...">
-            </div>
-          `).join('')}
-          <button class="gr-primary-btn" id="growthQuestionsContinueBtn">Continue to my tasks</button>
-        </div>
-      `;
-    } else if(growthStep === 'tasks'){
-      root.innerHTML = `
-        <div class="growth-page">
-          <button class="gr-back" id="growthBackBtn">\u2039 Back</button>
-          <h1 class="gr-title">What do you want to get done today?</h1>
-          <p class="gr-sub">Add everything on your plate \u2014 AI will fit it around your routine and suggest habits toward your goal.</p>
-          <div class="gr-task-list">
-            ${growthTasks.length === 0 ? '<div class="empty-note">No tasks added yet.</div>' : growthTasks.map((t,i) => `
-              <div class="gr-task-item"><span>${escapeAttr(t)}</span><button data-grm-task="${i}">\u2715</button></div>
-            `).join('')}
-          </div>
-          <div class="gr-add-task-row">
-            <input type="text" id="growthTaskInput" placeholder="Add a task...">
-            <button id="growthAddTaskBtn">+ Add</button>
-          </div>
-          ${growthError ? `<div class="gr-error">${escapeAttr(growthError)}</div>` : ''}
-          <button class="gr-primary-btn" id="growthGeneratePlanBtn" ${growthTasks.length===0?'disabled':''}>\u2728 Build my plan</button>
-        </div>
-      `;
-    } else if(growthStep === 'plan'){
-      if(growthLoading){
-        root.innerHTML = `<div class="growth-page"><div class="gr-loading"><div class="spin">\u2728</div>Building your optimal day and habit plan...</div></div>`;
-        return;
-      }
-      root.innerHTML = `
-        <div class="growth-page">
-          <h1 class="gr-title">Your plan for today</h1>
-          <p class="gr-sub">Built around your ${escapeAttr(growthCategory)} routine</p>
-          <div class="gr-timeline">
-            ${growthPlan.map(b => `
-              <div class="gr-block">
-                <div class="time">${escapeAttr(b.time||'')}</div>
-                <div><div class="task">${escapeAttr(b.task||'')}</div><div class="note">${escapeAttr(b.note||'')}</div></div>
-              </div>
-            `).join('')}
-          </div>
-          <div class="gr-dash-actions">
-            <button id="growthViewDashBtn">\ud83c\udf31 View my Growth habit tracker</button>
-            <button id="growthStartOverBtn">Start over</button>
-          </div>
-        </div>
-      `;
-    } else if(growthStep === 'dashboard'){
-      renderGrowthDashboard(root);
-    }
-  }
+    const todayIdx = waTodayIdx();
+    if(winterArcSel < 0 || winterArcSel > 89) winterArcSel = Math.min(89, Math.max(0, todayIdx));
 
-  function renderGrowthDashboard(root){
-    const dates = growthViewMode === 'monthly'
-      ? getMonthDates(growthMonthCursor.getFullYear(), growthMonthCursor.getMonth())
-      : getWeekDates(growthWeekCursor);
-    const colTemplate = `170px repeat(${dates.length}, ${growthViewMode==='monthly' ? '30px' : '42px'})`;
+    const sel = winterArcSel;
+    const d = waDateOf(sel);
+    const t = waTicks(sel);
+    const L = waListFor(sel);
+    const phase = sel < 30 ? 'Days 1-30: build the habit' : sel < 60 ? 'Days 31-60: double down' : 'Days 61-90: grow and prepare';
+    const note = WINTER_NOTES[sel+1];
 
-    let headerCells = `<div class="habit-name-header">Habit</div>`;
-    dates.forEach(d => {
-      headerCells += growthViewMode === 'monthly'
-        ? `<div class="day-header">${d.getDate()}</div>`
-        : `<div class="day-header">${d.getDate()}<span class="wd">${WD_SHORT[d.getDay()]}</span></div>`;
-    });
+    let cnt = 0;
+    let gridHtml = '';
+    for(let i=0;i<90;i++){
+      const c = waComplete(i);
+      if(c) cnt++;
+      const cls = (c?'done ':'') + (!c && i<todayIdx ? 'past ' : '') + (i===sel?'sel ':'') + (i===todayIdx?'today':'');
+      gridHtml += `<button class="${cls}" data-wa-day="${i}" aria-label="Day ${i+1}">${i+1}</button>`;
+    }
 
-    let rowsHtml = '';
-    if(data.growth.habits.length === 0){
-      rowsHtml = `<div class="empty-note">No Growth habits yet \u2014 plan a day to get AI-suggested habits, or add one below.</div>`;
-    } else {
-      data.growth.habits.forEach(h => {
-        let cells = `
-          <div class="habit-name-cell">
-            <span class="habit-emoji">${h.emoji || '\u2728'}</span>
-            <input type="text" data-growth-habit-name="${h.id}" value="${escapeAttr(h.name)}" placeholder="Habit name">
-            <button class="habit-del" data-growth-del-habit="${h.id}" title="Delete habit">\u2715</button>
-          </div>`;
-        dates.forEach(d => {
-          const eff = growthEffectiveStatus(h.id, d);
-          const glyph = eff === 'done' ? '\u2713' : (eff === 'missed' ? '\u2715' : '');
-          cells += `<div class="day-cell"><div class="cell ${eff}" data-growth-habit="${h.id}" data-growth-date="${dateKey(d)}">${glyph}</div></div>`;
-        });
-        rowsHtml += `<div class="habit-row" style="grid-template-columns:${colTemplate}">${cells}</div>`;
-      });
+    let streak = 0;
+    let e = todayIdx > 89 ? 89 : todayIdx;
+    if(e >= 0){
+      if(!waComplete(e)) e--;
+      for(; e >= 0 && waComplete(e); e--) streak++;
+    }
+
+    const ws = Math.floor(sel/7)*7;
+    let weekTot = 0, weekDone = 0;
+    for(let j=ws; j<Math.min(ws+7,90); j++){
+      const tk = waTicks(j);
+      weekTot += tk.length;
+      weekDone += tk.filter(Boolean).length;
     }
 
     root.innerHTML = `
-      <div class="growth-page" style="max-width:none;">
-        <h1 class="gr-title">Your Growth tracker</h1>
-        <p class="gr-sub">${data.growth.category ? 'For: ' + escapeAttr(data.growth.category) : 'Habits toward your goal'}</p>
-        <div class="gr-dash-actions">
-          <button id="growthRedoPlanBtn">\u2728 Plan another day</button>
-          ${data.growth.plan && data.growth.plan.length ? `<button id="growthViewPlanBtn">\ud83d\udcc4 View last day plan</button>` : ''}
+      <div class="wa-page">
+        <h1 class="wa-title">\u2744\ufe0f Winter Arc</h1>
+        <p class="wa-sub">1 YouTube video + 4 Reels every week. Content first.</p>
+        <div class="wa-stats">
+          <div class="wa-stat"><b>${streak}</b><span>day streak</span></div>
+          <div class="wa-stat"><b>${cnt}/90</b><span>days complete</span></div>
+          <div class="wa-stat"><b>${weekDone}/${weekTot}</b><span>tasks this week</span></div>
         </div>
-        <div class="controls-bar">
-          <div class="view-toggle">
-            <button data-growth-view="monthly" class="${growthViewMode==='monthly'?'active':''}">Monthly</button>
-            <button data-growth-view="weekly" class="${growthViewMode==='weekly'?'active':''}">Weekly</button>
-          </div>
+        <div class="wa-bar"><i style="width:${(cnt/90*100)}%"></i></div>
+        <div class="wa-nav">
+          <button id="waPrevBtn" ${sel===0?'disabled':''}>\u2039</button>
+          <div><strong>Day ${sel+1} of 90</strong><small>${WD_NAMES[d.getUTCDay()]}, ${d.getUTCDate()}/${d.getUTCMonth()+1}/${d.getUTCFullYear()}</small></div>
+          <button id="waNextBtn" ${sel===89?'disabled':''}>\u203a</button>
         </div>
-        <div class="grid-wrapper">
-          <div class="grid-header-row" style="grid-template-columns:${colTemplate}">${headerCells}</div>
-          ${rowsHtml}
-          <div class="add-habit-row">
-            <input type="text" id="newGrowthHabitInput" placeholder="New Growth habit...">
-            <button id="addGrowthHabitBtn">+ Add habit</button>
-          </div>
-        </div>
+        <p class="wa-phase">${phase}</p>
+        <ul class="wa-tasks">
+          ${L.map((txt,k) => `
+            <li><label><input type="checkbox" data-wa-task="${k}" ${t[k]?'checked':''}><span>${escapeAttr(txt)}</span></label></li>
+          `).join('')}
+        </ul>
+        ${note ? `<div class="wa-note">${escapeAttr(note)}</div>` : ''}
+        <h2>All 90 days</h2>
+        <div class="wa-grid">${gridHtml}</div>
+        <p class="wa-legend">Blue = all tasks done. Red = past day not finished. Orange ring = today.</p>
+        <div class="wa-set"><label for="waStartInput">Start date</label><input type="date" id="waStartInput" value="${escapeAttr(data.winterArc.startDate)}"></div>
       </div>
     `;
   }
 
   function renderPage(){
     const root = document.getElementById('pageRoot');
-    if(section === 'growth'){
-      renderGrowth();
+    if(section === 'winterArc'){
+      renderWinterArc();
       return;
     }
     if(page === 'tracker'){
@@ -1525,17 +1074,19 @@
       const h = data.habits.find(h => h.id === id);
       if(h){ h.name = e.target.value; scheduleSave(); }
     }
-    if(e.target.matches('[data-gqidx]')){
-      const idx = Number(e.target.getAttribute('data-gqidx'));
-      growthAnswers[idx] = e.target.value;
+    if(e.target.matches('[data-wa-task]')){
+      const idx = Number(e.target.getAttribute('data-wa-task'));
+      waToggleTask(winterArcSel, idx);
+      renderPage();
     }
-    if(e.target.matches('[data-growth-habit-name]')){
-      const id = e.target.getAttribute('data-growth-habit-name');
-      const h = data.growth.habits.find(h => h.id === id);
-      if(h){ h.name = e.target.value; scheduleSave(); }
-    }
-    if(e.target.id === 'growthUpiRefInput'){
-      growthUpiRefInput = e.target.value;
+    if(e.target.id === 'waStartInput'){
+      if(e.target.value){
+        data.winterArc.startDate = e.target.value;
+        scheduleSave();
+        const ti = waTodayIdx();
+        winterArcSel = Math.min(89, Math.max(0, ti));
+        renderPage();
+      }
     }
   });
 
@@ -1569,137 +1120,15 @@
     if(t.matches('[data-section]')){
       section = t.getAttribute('data-section');
       renderSectionNav();
-      if(section === 'growth'){
-        growthStep = 'loading';
-        growthPaymentJustSubmitted = false;
-        renderPage();
-        loadGrowthSubscription().then(() => {
-          const access = growthAccessInfo();
-          growthStep = access.active
-            ? (data.growth.habits.length > 0 ? 'dashboard' : 'category')
-            : 'paywall';
-          renderPage();
-        });
-      } else {
-        renderPage();
-      }
-      return;
-    }
-    if(t.id === 'growthClaimFreeBtn'){ claimFreeYear(); return; }
-    if(t.id === 'growthAdminViewBtn'){ growthStep = 'admin'; loadGrowthAdminSubmissions(); return; }
-    if(t.id === 'growthBackToPaywallBtn'){ growthPayTier = null; growthError=''; growthStep = 'paywall'; renderPage(); return; }
-    if(t.matches('[data-gtier]')){
-      growthPayTier = t.getAttribute('data-gtier');
-      growthError = '';
       renderPage();
       return;
     }
-    if(t.id === 'growthSubmitPaymentBtn'){ submitUpiPayment(); return; }
-    if(t.matches('[data-gr-approve]')){ approveGrowthSubmission(t.getAttribute('data-gr-approve'), t.getAttribute('data-gr-tier')); return; }
-    if(t.matches('[data-gr-reject]')){ rejectGrowthSubmission(t.getAttribute('data-gr-reject')); return; }
-    if(t.id === 'growthAdminBackBtn'){
-      const access = growthAccessInfo();
-      growthStep = access.active ? (data.growth.habits.length > 0 ? 'dashboard' : 'category') : 'paywall';
+    if(t.id === 'waPrevBtn'){ if(winterArcSel > 0){ winterArcSel--; renderPage(); } return; }
+    if(t.id === 'waNextBtn'){ if(winterArcSel < 89){ winterArcSel++; renderPage(); } return; }
+    const waDayBtn = t.closest('[data-wa-day]');
+    if(waDayBtn){
+      winterArcSel = Number(waDayBtn.getAttribute('data-wa-day'));
       renderPage();
-      return;
-    }
-    const gcatBtn = t.closest('[data-gcat]');
-    if(gcatBtn){
-      const cat = gcatBtn.getAttribute('data-gcat');
-      if(cat === 'others'){
-        growthStep = 'others-sub';
-        renderPage();
-      } else {
-        growthCategory = cat;
-        generateGrowthQuestions();
-      }
-      return;
-    }
-    if(t.id === 'growthOtherBtn'){
-      const val = document.getElementById('growthOtherInput').value.trim();
-      if(val){ growthCategory = val; generateGrowthQuestions(); }
-      return;
-    }
-    if(t.id === 'growthBackBtn'){
-      if(growthStep === 'others-sub') growthStep = 'category';
-      else if(growthStep === 'questions') growthStep = 'category';
-      else if(growthStep === 'tasks') growthStep = 'questions';
-      growthError = '';
-      renderPage();
-      return;
-    }
-    if(t.id === 'growthQuestionsContinueBtn'){
-      growthStep = 'tasks';
-      renderPage();
-      return;
-    }
-    if(t.id === 'growthAddTaskBtn'){
-      const input = document.getElementById('growthTaskInput');
-      const val = input.value.trim();
-      if(val){ growthTasks.push(val); input.value=''; renderPage(); }
-      return;
-    }
-    if(t.matches('[data-grm-task]')){
-      const idx = Number(t.getAttribute('data-grm-task'));
-      growthTasks.splice(idx,1);
-      renderPage();
-      return;
-    }
-    if(t.id === 'growthGeneratePlanBtn'){
-      if(growthTasks.length > 0) generateGrowthPlan();
-      return;
-    }
-    if(t.id === 'growthViewDashBtn'){
-      growthStep = 'dashboard';
-      renderPage();
-      return;
-    }
-    if(t.id === 'growthStartOverBtn'){
-      resetGrowthWizard();
-      renderPage();
-      return;
-    }
-    if(t.id === 'growthRedoPlanBtn'){
-      resetGrowthWizard();
-      renderPage();
-      return;
-    }
-    if(t.id === 'growthViewPlanBtn'){
-      growthPlan = data.growth.plan || [];
-      growthCategory = data.growth.category;
-      growthStep = 'plan';
-      renderPage();
-      return;
-    }
-    if(t.matches('[data-growth-view]')){
-      growthViewMode = t.getAttribute('data-growth-view');
-      renderPage();
-      return;
-    }
-    if(t.matches('[data-growth-del-habit]')){
-      const id = t.getAttribute('data-growth-del-habit');
-      data.growth.habits = data.growth.habits.filter(h => h.id !== id);
-      Object.keys(data.growth.statuses).forEach(k => { if(k.startsWith(id + '::')) delete data.growth.statuses[k]; });
-      scheduleSave();
-      renderPage();
-      return;
-    }
-    if(t.matches('[data-growth-habit]') && t.matches('[data-growth-date]')){
-      const id = t.getAttribute('data-growth-habit');
-      const dk = t.getAttribute('data-growth-date');
-      toggleGrowthStatus(id, new Date(dk + 'T00:00:00'));
-      renderPage();
-      return;
-    }
-    if(t.id === 'addGrowthHabitBtn'){
-      const input = document.getElementById('newGrowthHabitInput');
-      const val = input.value.trim();
-      if(val){
-        data.growth.habits.push({ id: 'g' + Date.now() + Math.random().toString(36).slice(2,7), name: val, emoji: suggestEmoji(val) });
-        scheduleSave();
-        input.value = '';
-        renderPage();
-      }
       return;
     }
 
@@ -1786,15 +1215,6 @@
   document.addEventListener('keydown', (e) => {
     if(e.key === 'Enter' && e.target.id === 'newHabitInput'){
       document.getElementById('addHabitBtn').click();
-    }
-    if(e.key === 'Enter' && e.target.id === 'growthTaskInput'){
-      document.getElementById('growthAddTaskBtn').click();
-    }
-    if(e.key === 'Enter' && e.target.id === 'growthOtherInput'){
-      document.getElementById('growthOtherBtn').click();
-    }
-    if(e.key === 'Enter' && e.target.id === 'newGrowthHabitInput'){
-      document.getElementById('addGrowthHabitBtn').click();
     }
   });
 
